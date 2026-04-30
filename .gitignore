@@ -1,0 +1,40 @@
+## Visual Studio / .NET
+.vs/
+.vscode/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+## Build / Output
+bin/
+obj/
+artifacts/
+publish/
+
+## Rider
+.idea/
+
+## NuGet
+*.nupkg
+packages/
+.nuget/
+
+## EF Core Migrations (ignore if you prefer to commit migrations)
+**/Migrations/
+
+## Node
+node_modules/
+
+## Logs, databases, OS
+*.log
+*.sqlite
+*.db
+Thumbs.db
+.DS_Store
+
+## Secrets / local config
+# Keep secrets out of source control. Move DB passwords to user-secrets or environment variables.
+secrets.json
+# Ignore API appsettings that may contain credentials
+RazorProject.Api/appsettings.json

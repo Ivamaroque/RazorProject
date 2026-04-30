@@ -1,0 +1,48 @@
+@model List<RazorProject.Front.ViewModels.ChamadoListViewModel>
+
+@{
+    ViewData["Title"] = "Chamados";
+}
+
+<h1>Chamados</h1>
+
+@if (TempData["Success"] is string successMessage)
+{
+    <div class="alert alert-success">@successMessage</div>
+}
+
+<p>
+    <a class="btn btn-primary" asp-action="Create">Novo chamado</a>
+</p>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Titulo</th>
+            <th>Categoria</th>
+            <th>Prioridade</th>
+            <th>Status</th>
+            <th>Data abertura</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.Id</td>
+            <td>@item.Titulo</td>
+            <td>@item.Categoria</td>
+            <td>@item.Prioridade</td>
+            <td>@item.Status</td>
+            <td>@item.DataAbertura.ToString("dd/MM/yyyy")</td>
+            <td>
+                <a asp-action="Details" asp-route-id="@item.Id">Detalhes</a> |
+                <a asp-action="Edit" asp-route-id="@item.Id">Editar</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Excluir</a>
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>

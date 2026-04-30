@@ -1,0 +1,63 @@
+@model RazorProject.Front.ViewModels.ChamadoEditViewModel
+
+@{
+    ViewData["Title"] = "Editar chamado";
+}
+
+<h1>Editar chamado</h1>
+
+<form asp-action="Edit" method="post">
+    <input type="hidden" asp-for="Id" />
+    <div class="mb-3">
+        <label asp-for="Titulo" class="form-label"></label>
+        <input asp-for="Titulo" class="form-control" />
+        <span asp-validation-for="Titulo" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="Descricao" class="form-label"></label>
+        <textarea asp-for="Descricao" class="form-control"></textarea>
+        <span asp-validation-for="Descricao" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="CategoriaId" class="form-label"></label>
+        <select asp-for="CategoriaId" class="form-select">
+            @foreach (var categoria in Model.Categorias)
+            {
+                <option value="@categoria.Id">@categoria.Nome</option>
+            }
+        </select>
+        <span asp-validation-for="CategoriaId" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="Prioridade" class="form-label"></label>
+        <select asp-for="Prioridade" class="form-select">
+            <option value="1">Baixa</option>
+            <option value="2">Media</option>
+            <option value="3">Alta</option>
+            <option value="4">Urgente</option>
+        </select>
+        <span asp-validation-for="Prioridade" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="Status" class="form-label"></label>
+        <select asp-for="Status" class="form-select">
+            <option value="1">Aberto</option>
+            <option value="2">Em atendimento</option>
+            <option value="3">Finalizado</option>
+            <option value="4">Cancelado</option>
+            <option value="5">Reaberto</option>
+        </select>
+        <span asp-validation-for="Status" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="Responsavel" class="form-label"></label>
+        <input asp-for="Responsavel" class="form-control" />
+        <span asp-validation-for="Responsavel" class="text-danger"></span>
+    </div>
+    <button type="submit" class="btn btn-primary">Salvar</button>
+    <a asp-action="Index" class="btn btn-secondary">Cancelar</a>
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
